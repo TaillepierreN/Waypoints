@@ -9,24 +9,29 @@ public class PointB : MonoBehaviour
     GameObject spawnedCube;
     int count;
     float elapsedTime;
+    bool CR_running;
     private void OnMouseDown()
     {
-        count = 0;
-        spawnedCube = Instantiate(_cube, transform.position, Quaternion.identity);
-        StartCoroutine("MoveCube");
+        if (!CR_running)
+        {
+            count = 0;
+            spawnedCube = Instantiate(_cube, transform.position, Quaternion.identity);
+            StartCoroutine("MoveCube");
+        }
     }
     IEnumerator MoveCube()
     {
+        CR_running = true;
         if (count < _waypoints.Count)
         {
             elapsedTime = 0;
-            while(elapsedTime<2f)
+            while (elapsedTime < 2f)
             {
-            spawnedCube.transform.position = Vector3.Lerp(spawnedCube.transform.position,_waypoints[count].position, elapsedTime / 2f);
-            elapsedTime += Time.deltaTime;
-            yield return null;
+                spawnedCube.transform.position = Vector3.Lerp(spawnedCube.transform.position, _waypoints[count].position, elapsedTime / 2f);
+                elapsedTime += Time.deltaTime;
+                yield return null;
             }
-            
+
             count++;
             //Debug.Log("subsequent coroutines" + count);
             StartCoroutine("MoveCube");
@@ -36,6 +41,7 @@ public class PointB : MonoBehaviour
             yield return new WaitForSeconds(2f);
             spawnedCube.SetActive(false);
             StopCoroutine("MoveCube");
+            CR_running = false;
         }
     }
 }

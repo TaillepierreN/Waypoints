@@ -462,6 +462,7 @@ GameObject:
   - component: {fileID: 845442980}
   - component: {fileID: 845442979}
   - component: {fileID: 845442978}
+  - component: {fileID: 845442982}
   m_Layer: 0
   m_Name: PointB
   m_TagString: Untagged
@@ -547,6 +548,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &845442982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845442977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5a4f02567cc0144a7905c8ff09de92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waypoints:
+  - {fileID: 129480972}
+  - {fileID: 889162838}
+  - {fileID: 2129187411}
+  - {fileID: 1876992846}
+  _cube: {fileID: 5089894891213945046, guid: 847190b0e03948c4b894865b5aaae88a, type: 3}
 --- !u!1 &889162836
 GameObject:
   m_ObjectHideFlags: 0
